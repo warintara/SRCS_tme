@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class Compte {
+public class Compte implements Sauvegardable{
 
 	
 	
@@ -23,8 +23,8 @@ public class Compte {
 		DataInputStream d = ((DataInputStream)in);
 		String s = d.readUTF();
 		String[] ss = s.split(" ");
-		this.id = ss[0];
-		this.solde = Integer.parseInt(ss[1]);
+		this.id = ss[1];
+		this.solde = Integer.parseInt(ss[2]);
 	}
 		
 	public String getId() {
@@ -45,7 +45,7 @@ public class Compte {
 	
 	public void save(OutputStream out) throws IOException {
 		int sol = (int) solde;
-		((DataOutputStream)out).writeUTF((id + " " + sol));
+		((DataOutputStream)out).writeUTF(("Compte "+id + " " + sol));
 	}
 	
 	@Override
