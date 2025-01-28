@@ -3,6 +3,5 @@ package srcs.interpretor;
 import java.io.PrintStream;
 
 public interface Command {
-	void execute(PrintStream out);
-
+    void execute(PrintStream out) throws Exception;
 }

@@ -1,23 +1,23 @@
 package srcs.interpretor;
 
-import java.io.PrintStream;
+import java.io.*;
 
-public class Echo implements Command{
-	
-	private String[] commends; 
-	public Echo(String[] commends) throws IllegalArgumentException{
-		if(commends[0] != "echo " ) {
-			throw new IllegalArgumentException("Commend echo manquant");
-		}
-		this.commends = commends;
-		
-	}
-	@Override
-	public void execute(PrintStream out) {
-		for(String s : commends) {
-			out.print(s);
-		}
+public class Echo implements Command {
+    private final String[] args;
 
-	}
+    public Echo(String[] args) {
+        this.args = args;
+    }
 
+    @Override
+    public void execute(PrintStream out) {
+        // Construire la sortie en excluant args[0] (nom de la commande)
+        for (int i = 1; i < args.length; i++) {
+            out.print(args[i]);
+            if (i < args.length - 1) {
+                out.print(" "); // Ajouter un espace entre les arguments, mais pas après le dernier
+            }
+        }
+        out.println(); // Nouvelle ligne après les arguments
+    }
 }
