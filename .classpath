@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="TME3"/>
 	<classpathentry kind="src" path="TME1"/>
 	<classpathentry kind="src" path="TME2"/>
+	<classpathentry kind="src" path="TME4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
