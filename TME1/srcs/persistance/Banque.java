@@ -1,11 +1,15 @@
 package srcs.persistance;
 
+
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Set;
+//import srcs.persistance.Sauvegardable;
+
 
 public class Banque implements Sauvegardable {
 
@@ -16,12 +20,19 @@ public class Banque implements Sauvegardable {
 	}
 	
 	public Banque(InputStream in) throws IOException  {
-		DataInputStream d = ((DataInputStream)in);
-		String s = d.readUTF();
-		String[] ss = s.split(" ");
-		for(String compte : ss) {
-			clients.add( new Client(compte));
-		}
+        clients = new HashSet<>();
+        DataInputStream d = new DataInputStream(in);
+
+        int clientCount = d.readInt(); // Read the number of clients
+
+        for (int i = 0; i < clientCount; i++) {
+            String clientName = d.readUTF(); // Read client name
+            Compte compte = new Compte(in);  // Read account data
+
+            // Directly add the client (Set ensures uniqueness)
+            clients.add(new Client(clientName, compte));
+        }
+	    
 	}
 		
 	public int nbClients() {
@@ -49,8 +60,12 @@ public class Banque implements Sauvegardable {
 
 	@Override
 	public void save(OutputStream out) throws IOException {
-		// TODO Auto-generated method stub
-		
+		DataOutputStream d = new DataOutputStream(out);
+		d.writeInt(nbClients());
+		for(Client c : clients) {
+			c.save(d);
+		}
+		d.flush();
 	}
 	
 

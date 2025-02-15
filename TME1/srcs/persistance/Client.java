@@ -1,6 +1,7 @@
 package srcs.persistance;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,11 +19,10 @@ public class Client implements Sauvegardable{
 
 	}
 	public Client(InputStream in) throws IOException  {
-		DataInputStream d = ((DataInputStream)in);
-		String s = d.readUTF();
-		String[] ss = s.split(" ");
-		this.nom = ss[1];
-		this.compte = new Compte(ss[2]);
+		DataInputStream d = new DataInputStream(in);
+		nom = d.readUTF();
+		compte = new Compte(d);
+		d.close();
 	}
 	
 		
@@ -46,8 +46,10 @@ public class Client implements Sauvegardable{
 
 	@Override
 	public void save(OutputStream out) throws IOException {
-		// TODO Auto-generated method stub
-		
+		DataOutputStream d = new DataOutputStream(out);
+		d.writeUTF(nom);
+		compte.save(d);
+		d.flush();
 	}
 	
 }

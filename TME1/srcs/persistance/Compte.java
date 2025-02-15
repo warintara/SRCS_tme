@@ -45,9 +45,10 @@ public class Compte implements Sauvegardable{
 	
 	public void save(OutputStream out) throws IOException {
 	    DataOutputStream d = new DataOutputStream(out);
-	    d.writeUTF(this.getClass().getName());
+	    //d.writeUTF(this.getClass().getName());
 	    d.writeUTF(id);
 	    d.writeDouble(solde);
+	    d.flush();
 	}
 
 	@Override

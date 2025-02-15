@@ -58,7 +58,7 @@ public class BanqueCompteJoinTest {
 		assertEquals(1,banque.nbComptes());
 		banque.getClient("client1").getCompte().crediter(10);
 		assertEquals(18,banque.getClient("client1").getCompte().getSolde(),0);
-		//assertTrue(banque.getClient("client2").getCompte().getSolde() == banque.getClient("client1").getCompte().getSolde());
+		assertTrue(banque.getClient("client2").getCompte().getSolde() == banque.getClient("client1").getCompte().getSolde());
 
 		
 
