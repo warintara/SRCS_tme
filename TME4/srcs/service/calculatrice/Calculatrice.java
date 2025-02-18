@@ -6,16 +6,18 @@ public interface Calculatrice {
 	public int mult(int i1, int i2);
 	public ResDiv div(int i1, int i2);
 	
-	static class ResDiv{
-		public int getQuotient(int i1,int i2) {
-			return i1/i2;
-			
+	public static class ResDiv{
+		
+		private int quotient;
+		private int reste;
+		public ResDiv(int i1,int i2) {
+			quotient = i1 / i2;
+			reste = i1 % i2;
 		}
-		public int getReste(int i1,int i2) {
-			return i1%i2;
-			
-		}
+
 	}
+	
+	
 	
 
 }

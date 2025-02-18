@@ -11,6 +11,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/home/hinode/git/SRCS_tme/bin"/>
+	<classpathentry kind="lib" path="/users/Etu6/28707636/git/SRCS_tme/bin"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
