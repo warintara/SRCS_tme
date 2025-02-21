@@ -1,0 +1,31 @@
+syntax="proto3";
+
+package srcs;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+option java_multiple_files=true;
+
+message user{
+	string username=1;
+	string ip=2;
+	string port=3;
+}
+
+message mes{
+	string username=1;
+	string message=2;
+}
+
+
+service Chat{
+	rpc subscribe(user) returns(google.protobuf.BoolValue);
+	rpc send(mes) returns(google.protobuf.Int32Value);
+	rpc listChatter(google.protobuf.Empty) returns(google.protobuf.StringValue);
+	rpc unsubscribe(google.protobuf.StringValue) returns(google.protobuf.Empty)  ;
+}
+
+
+service MessageReceiver{
+	rpc newMessage(mes) returns(google.protobuf.Empty);
+}
