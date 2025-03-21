@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="TME3"/>
+	<classpathentry kind="src" path="TME7"/>
 	<classpathentry kind="src" path="TME8"/>
 	<classpathentry kind="src" path="TME6"/>
 	<classpathentry kind="src" path="TME5"/>
